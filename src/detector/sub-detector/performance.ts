@@ -12,6 +12,7 @@ import {calculateTime, IS, createLargeObjectArray} from 'src/utils/util';
 export default class extends Detector {
   largeObjectArray: any;
   maxPrintTime: number;
+  private count: number = 0;
 
   constructor () {
     super({
@@ -35,7 +36,12 @@ export default class extends Detector {
     if (tablePrintTime === 0 || this.maxPrintTime === 0) return false;
 
     if (tablePrintTime > this.maxPrintTime * 10) {
-      this.onDevToolOpen();
+      if (this.count >= 2) {
+        this.onDevToolOpen();
+      } else {
+        this.count ++;
+        this.detect();
+      }
     }
   }
 

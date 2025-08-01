@@ -67,7 +67,7 @@ function disableMenu (target: Window) {
   }
 }
 function disableSelect (target: Window) {
-  if (config.disableSelect) {
+  if (config.disableSelect || config.disableInputSelect) {
     addPreventListener(target, 'selectstart');
   }
 }
@@ -88,7 +88,15 @@ function disablePaste (target: Window) {
 }
 function addPreventListener (target: Window, name: string) {
   target.addEventListener(name, (e: Event) => {
-    return preventEvent(target, e);
+    if (isInputElement(e.target as any)) {
+      if (config.disableInputSelect) {
+        return preventEvent(target, e);
+      }
+    } else {
+      if (config.disableSelect) {
+        return preventEvent(target, e);
+      }
+    }
   });
 }
 
@@ -98,4 +106,9 @@ function preventEvent (target: Window, e: Event) {
   e.returnValue = false;
   e.preventDefault();
   return false;
+}
+
+function isInputElement (el: Element) {
+  if (!el) return false;
+  return el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.getAttribute?.('contenteditable') === 'true';
 }

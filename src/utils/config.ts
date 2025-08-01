@@ -17,9 +17,10 @@ export const config: IConfig = {
   disableMenu: true, // 是否禁用右键菜单
   stopIntervalTime: 5000, // 在移动端时取消监视的等待时长
   clearIntervalWhenDevOpenTrigger: false, // 是否在触发之后停止监控
-  detectors: [0, 1, 3, 4, 5, 6, 7], // 'all', ! 默认去掉sizeDetector 因为会误伤
+  detectors: [1, 3, 4, 5, 6, 7], // 'all', ! 默认去掉sizeDetector 因为会误伤 // 0.3.9 去掉默认的 reg-detector QQ浏览器某些版本可能会误伤
   clearLog: true,
   disableSelect: false,
+  disableInputSelect: false,
   disableCopy: false,
   disableCut: false,
   disablePaste: false,
@@ -32,6 +33,8 @@ export const config: IConfig = {
 const MultiTypeKeys = ['detectors', 'ondevtoolclose', 'ignore'];
 
 export function mergeConfig (opts: Partial<IConfig> = {}) {
+  if (opts.onDevtoolOpen) { opts.ondevtoolopen = opts.onDevtoolOpen; }
+  if (opts.onDevtoolClose) { opts.ondevtoolclose = opts.onDevtoolClose; }
     
   for (const key in config) {
     const k = key as keyof IConfig;

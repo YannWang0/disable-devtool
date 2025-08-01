@@ -12,7 +12,8 @@ import disableDevtool from '../../src';
 disableDevtool({
   md5: '0b9e05caf5000360ec1c263335bd83fe', // ddtk
   // url: 'https://www.qq.com',
-  ondevtoolopen: (type, next) => {
+  onDevtoolOpen: (type, next) => {
+  // ondevtoolopen: (type, next) => {
     // window.location.href = 'https://www.qq.com';
     document.body.innerHTML = 'devtool opened!; type =' + type;
     // next();
@@ -25,13 +26,15 @@ disableDevtool({
     // next();
     // console.log(next);
   },
+  // ignore: () => true,
   clearIntervalWhenDevOpenTrigger: true,
   interval: 1000,
   // tkName: 'ddtk',
   // disableMenu: false,
   // clearLog: false,
   // disableCopy: true,
-  // disableSelect: true,
+  disableSelect: true,
+  disableInputSelect: true,
   // disablePaste: true,
   // url: 'https://www.baidu.com'
   // detectors: [disableDevtool.DetectorType.DATE_TO_STRING],

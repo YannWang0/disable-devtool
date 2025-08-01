@@ -5,6 +5,13 @@
 -->
 # Version Log:
 
+## 0.3.9
+
+1. 增加 disableInputSelect，独立设置开启和关闭输入框选择功能，现在默认会不限制输入框选择
+2. 移除默认启用的reg-detector，某些qq浏览器下可能导致误触发
+3. 增加 onDevtoolOpen 和 onDevtoolClose
+4. performance-detector 增加一次检测，防止单次因偶然性导致误触发
+
 ## 0.3.8
 
 1. 修复nodejs中引入报错的问题（SSR）
