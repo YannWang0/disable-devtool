@@ -221,6 +221,7 @@ declare interface IConfig {
     detectors?: Array<DetectorType>; // Enabled detectors See 3.5 for details of detectors. The default is all, it is recommended to use all
     clearLog?: boolean; // Whether to clear the log every time
     disableSelect?: boolean; // Whether to disable selection text Default is false
+    disableInputSelect?: boolean; // Whether to disable Input selection text Default is false
     disableCopy?: boolean; // Whether to disable copying, default is false
     disableCut?: boolean; // Whether to disable cutting, default is false
     disablePaste: boolean; // Whether to disable paste, default is false

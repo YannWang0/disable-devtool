@@ -219,6 +219,7 @@ interface IConfig {
     detectors?: Array<DetectorType>; // 启用的检测器 检测器详情见 3.5 默认为全部，建议使用全部
     clearLog?: boolean; // 是否每次都清除log
     disableSelect?: boolean; // 是否禁用选择文本 默认为false
+    disableInputSelect?: boolean; // 是否禁用文本框选择文本 默认为false
     disableCopy?: boolean; // 是否禁用复制 默认为false
     disableCut?: boolean; // 是否禁用剪切 默认为false
     disablePaste: boolean; // 是否禁用粘贴 默认为false
